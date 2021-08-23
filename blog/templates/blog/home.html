@@ -1,0 +1,48 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+{% load static %}
+
+
+  <body>
+    <header id = "header">
+      <img id = "logo" src="{% static 'blog/img/logo.png' %}" alt="logo de l'entreprise">
+    </header>
+
+    <nav id="main-menu">
+      <ul id="mm-ul">
+        <form action = "{% url 'blog:index' %}" method="POST">
+          {% csrf_token %}
+          <li class = "mm-li"><a href="{% url 'blog:index' %}">Présentation</a></li>
+          {% if type_list %}
+            {% for type in type_list %}
+              <li class = "mm-li"><a href="{% url 'blog:image' type.value %}">{{ type.label }}</a></li>
+            {% endfor %}
+          {% else %}
+            <p>Erreur</p>
+          {% endif %}
+        </form>
+      </ul>
+    </nav>
+
+
+    <div class="content">
+      {% if image_list %}
+        <ul class = wrapper>
+        {% for post in image_list %}
+          <li> <img class = "image-show" src="{{media_url}}{{ post.image }}" alt="{{ post.description }}"> </li>
+        {% endfor %}
+        </ul>
+      {% else %}
+        <p>Aucune image n'est disponible.</p>
+      {% endif %}
+      <div id = "modal" class="modal">
+         <span class = "close" onlick="document.getElementById('modal').style.display='none'">&times;</span>
+         <img class="modal-content" id="img01">
+      </div>
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src = "{% static 'blog/modal-images.js' %}"></script>
+
+{% endblock %}

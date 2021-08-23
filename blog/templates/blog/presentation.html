@@ -1,0 +1,73 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+{% load static %}
+<body>
+  <header id = "header">
+    <img id = "logo" src="{% static 'blog/img/logo.png' %}" alt="logo de l'entreprise">
+  </header>
+
+  <nav id="main-menu">
+    <ul id="mm-ul">
+      <form action = "{% url 'blog:index' %}" method="POST">
+        {% csrf_token %}
+        <li class = "mm-li"><a href="{% url 'blog:index' %}">Présentation</a></li>
+        {% if type_list %}
+          {% for type in type_list %}
+            <li class = "mm-li"><a href="{% url 'blog:image' type.value %}">{{ type.label }}</a></li>
+          {% endfor %}
+        {% else %}
+          <p>Erreur</p>
+        {% endif %}
+      </form>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <article class = "article presentation">
+      <img src="{% static 'blog/img/photo-du-dirigeant.jpg' %}" alt="photo de hervé Le Marrec">
+      <h2>CHOISIR L'ÉQUIPE ARC EN STYLE, C'EST LA GARANTIE DE L’ÉLÉGANCE ET DE LA PERFORMANCE</h2>
+
+      <p>Avec Arc en Style, donnez vie à vos envies d’espaces lumineux, d’intérieurs organisés et d’ouvertures sécurisées. <br>
+        Découvrez une entreprise implantée sur Nevers, garante de travaux de qualité, sans intermédiaire. <br>
+        Votre spécialiste en menuiserie et tous travaux d’agencements intérieurs personnalisés et sur-mesures. <br>
+        Visitez notre showroom de 50m2, et choisissez parmi la large palette d’échantillons pour donner vie à votre projet.</p>
+    </article>
+
+    <article class="koikispass article">
+      <img src="{% static 'blog/img/logo-KKP-2020_v2.png' %}" alt="logo de koikispass">
+      <h2>DÉCOUVREZ NOTRE PARTENARIAT AVEC KOIKISPASS</h2>
+      <p>Réductions exceptionnelles sur présentation du coupon. <br>
+      Rendez-vous sur le site de koikispass à l'adresse <a href="https://www.koikispass.com/le-klub/arc-en-style/">https://www.koikispass.com/le-klub/arc-en-style/</a>.</p>
+    </article>
+
+    <article class="showroom article">
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2720.8582941705154!2d3.149068798027578!3d47.00375531771369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f045f0c997999f%3A0xb0572d6873e4fce7!2s58+Rue+de+Vauzelles%2C+58000+Nevers!5e0!3m2!1sfr!2sfr!4v1543238596211" frameborder="0" style="border:0" allowfullscreen class = "map-map"></iframe>
+       <h2>DECOUVREZ NOTRE SHOWROOM SUR NEVERS</h2>
+       <p>Visitez notre showroom de 50m2, et choisissez parmi la large palette d’échantillons pour donner vie à votre projet.</p>
+    </article>
+
+    <article class="offre article">
+      <img src="{% static 'blog/img/dressing2.jpg' %}" alt="photo de l'intérieur du showroom">
+      <h2>UNE OFFRE COMPLÈTE DE PRODUITS ET DE SERVICES AUTOUR DES FERMETURES ET DE L'AGENCEMENT INTÉRIEUR</h2>
+      <ul>
+        <li>Menuiserie - Ouvertures/Fermetures : portes et fenêtres (Bois, PVC et Aluminium), volets roulants et battants, porte de garage, vérandas, portails et clôtures, Stores</li>
+        <li>Travaux d'agencement sur-mesure : cuisines, salles de bains, placards, bibliothèques, dressings, isolation</li>
+        <li>Rénovation</li>
+        <li>Showroom de 50m2 + bureau + atelier de 350m2</li>
+        <li>Marques : CALIBAIE et ELFA</li>
+        <li>Fabrication artisanale au sein de l'atelier</li>
+        <li>Déplacement à votre domicile, prise de mesures, élaboration d'un plan, d'un descriptif et d'une implantation 3D, devis gratuit</li>
+        <li>Garantie RGE Qualibat</li>
+        <li>Expérience de 12 ans dans le domaine</li>
+        <li>Équipe de 5 professionnels - seuls interlocuteurs - sans autres intermédiaires.</li>
+        <li>Écoute, suivi, relation de proximité</li>
+      </ul>
+    </article>
+  </div>
+
+
+
+
+</body>
+{% endblock %}

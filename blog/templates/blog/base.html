@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>Arc En Style</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/style-sheet.css' %}">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,400|Raleway|Roboto&display=swap" rel="stylesheet">
+
+  </head>
+
+  {% block content %}
+  {% endblock %}
+
+  <footer id = "contact-button">
+    <button type = "button" class = "collapsible">Contact</button>
+    <div id="collapsible-content">
+      <pre>   58 Rue de Vauzelles 58000 Nevers   <br>   Tél. : 03 86 37 00 79   <br>   Portable : 06 62 23 00 71   <br>   Mail : arcenstyle.pro@gmail.com</pre>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src = "{% static 'blog/sticky-header.js' %}"></script>
+  <script type="text/javascript" src = "{% static 'blog/collapsible.js' %}"></script>
+
+</html>

@@ -1,0 +1,402 @@
+/* erase whith borders */
+
+body{
+  margin: 0;
+  padding:0;
+}
+
+#header{
+  background: linear-gradient(to bottom, transparent 50%, #202020 100%), url("img/interieur.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+}
+
+/* sticky header on scroll */
+.sticky {
+  position: fixed;
+  top:0;
+}
+.sticky + .content {
+  padding-top: 102px;
+}
+
+#logo{
+  width: 30%;
+  height: 100%;
+  margin: 10%;
+}
+
+#main-menu{
+  text-align: center;
+  padding: 0;
+  background: #202020;
+  width: 100%;
+}
+
+#mm-ul{
+  list-style-type: none;
+  margin: 0;
+}
+
+.mm-li{
+  display: inline-block;
+}
+
+.mm-li > a {
+  display: block;
+  padding: 15px;
+  padding-left: 100px;
+  padding-right: 100px;
+  text-decoration: none;
+  font-family : 'Poppins', sans-serif;
+  font-weight: lighter;
+  font-size: 120%;
+  color: white;
+  cursor: pointer;
+}
+
+.mm-li a:hover{
+  background: #484f4f;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.content{
+  background: white;
+  margin:0;
+  padding:0;
+  display: flex;
+  align-items:center;
+  flex-direction: column;
+}
+
+/* image wrapper */
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 10px;
+  grid-auto-flow: dense;
+  list-style: none;
+  margin: 1em auto;
+  padding: 0;
+  max-width: 60%;
+}
+
+.wrapper > li {
+  border: 1px solid #ccc;
+}
+/*
+.wrapper li.landscape {
+  grid-column-end: span 2;
+}
+*/
+.wrapper > li > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Modal Images */
+
+.image-show{
+  transition: 0.3;
+  cursor: pointer;
+}
+
+.image-show:hover{
+  opacity: 0.7;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9)
+}
+
+.modal-content{
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.modal-content {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@@keyframes zoom {
+  from {transform: scale(0)}
+  to {transition: scale(1)}
+}
+
+.close{
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover, .close:focus{
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* presentation page */
+
+.article{
+  padding: 4%;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap:3%;
+  width: 60%;
+  align-items: center;
+}
+
+.article > img,iframe{
+  width: 100%;
+  grid-row: 1 / span 2;
+}
+
+.article > p, .article > li {
+  font-family: 'roboto', sans-serif;
+  grid-column: 2 / span 3;
+  font-size: 105%;
+}
+
+.article > h2 {
+  font-size: 180%;
+  font-family: 'Raleway', sans-serif;
+  grid-column: 2 / span 3;
+}
+.offre > ul{
+  width: 200%;
+}
+.offre > ul > li{
+  font-family: 'roboto', sans-serif;
+}
+
+#contact-button{
+  position: fixed;
+  right: 30px;
+  bottom: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.collapsible{
+  background: #202020;
+  box-shadow: 0px 0px 0px transparent;
+  border:0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+  display: block;
+  width: 150px;
+  padding: 15px;
+  text-decoration: none;
+  font-family : 'Poppins', sans-serif;
+  font-size: 120%;
+  color: #e6e2d3;
+  cursor: pointer;
+}
+
+.collapsible:focus {outline:0;}
+
+.active, #collapsible:hover{
+  background: #202020;
+  opacity: 0.8;
+  transition: 0.5s;
+}
+
+/* make the collapsible button */
+
+#collapsible-content {
+  min-width: 80vmax;
+  height: 60px;
+  margin-right: 10px;
+  opacity: 0.8;
+  display: none;
+  background-color: #202020;
+}
+
+#collapsible-content > pre{
+  color: #e6e2d3;
+  font-family : 'Poppins', sans-serif;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+br {
+    display: none;
+}
+
+
+/* media queries */
+@media screen and (max-width: 1630px){
+  .mm-li > a {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .article > img,iframe{
+    width: 100%;
+    grid-row: 1 / span 2;
+  }
+
+  .article > p, .article > li {
+    font-family: 'roboto', sans-serif;
+    grid-column: 2 / span 1;
+    font-size: 100%;
+  }
+
+  .article > h2 {
+    font-size: 150%;
+    font-family: 'Raleway', sans-serif;
+    grid-column: 2 / span 1;
+  }
+  .offre > ul{
+    width: 100%;
+  }
+
+  #logo{
+    width: 40%;
+  }
+
+  #contact-button{
+    position: fixed;
+    right: 30px;
+    bottom: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap-reverse;
+  }
+
+  #collapsible-content {
+    min-width: 350px;
+    min-height: 130px;
+    margin-right: 0;
+    height: 60px;
+    opacity: 0.8;
+    display: none;
+    text-align: left;
+  }
+
+  br {
+      display: block;
+  }
+}
+
+@media screen and (max-width: 1130px){
+  .mm-li > a {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (max-width: 930px){
+  .mm-li{
+    display: block;
+  }
+
+  #main-menu > ul{
+    padding:0;
+  }
+
+  #logo{
+    padding-top: 10%;
+    padding-bottom: 10%;
+    width: 50%;
+    margin: 5%;
+  }
+
+  #header{
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+  }
+
+  .article{
+    padding: 4%;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-bottom: 10%;
+  }
+
+  .article > img,iframe{
+    width: 100%;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+  #logo{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    width: 80%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+
+  #header{
+    background-size:auto;
+    background-attachment:scroll;
+    display: flex;
+    justify-content:flex-start;
+  }
+
+  .article{
+    margin-bottom: 40%;
+  }
+
+  #contact-button{
+    position: fixed;
+    right: 30px;
+    bottom: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap-reverse;
+  }
+
+  #collapsible-content {
+    min-width: 350px;
+    min-height: 130px;
+    margin-right: 0;
+    height: 60px;
+    opacity: 0.8;
+    display: none;
+    text-align: left;
+  }
+
+  br {
+      display: block;
+  }
+
+  body{margin-bottom: 100px;}
+}
